@@ -19,7 +19,7 @@ class Species extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
-    // protected $fillable = [];
+    protected $fillable = ['name', 'latin_name', 'description'];
     // protected $hidden = [];
     // protected $dates = [];
 
