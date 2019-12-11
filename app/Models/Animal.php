@@ -34,7 +34,10 @@ class Animal extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-
+    public function species()
+    {
+        return $this->belongsTo('App\Models\Species', 'species_id');
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES

@@ -28,8 +28,17 @@ class AnimalCrudController extends CrudController
 
     protected function setupListOperation()
     {
-        // TODO: remove setFromDb() and manually define Columns, maybe Filters
-        $this->crud->setFromDb();
+        $this->crud->setColumns([
+            ['label' => 'Nom', 'name' =>'name'],
+        ]);
+        $this->crud->addColumn([
+            'label' => 'Éspèce',
+            'type' => 'select',
+            'name' => 'species_id',
+            'entity' => 'species',
+            'attribute' => 'name',
+            'model' => "App\Models\Species",
+        ]);
     }
 
     protected function setupCreateOperation()
