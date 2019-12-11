@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
-use Backpack\CRUD\app\Models\Traits\CrudTrait;
+use App\Traits\ImageTrait;
 use Illuminate\Database\Eloquent\Model;
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
 
 class Animal extends Model
 {
-    use CrudTrait;
+    use CrudTrait, ImageTrait;
 
     /*
     |--------------------------------------------------------------------------

@@ -61,6 +61,8 @@ class AnimalCrudController extends CrudController
             'name' => 'image',
             'label' => 'Image',
             'type' => 'image',
+            'upload' => true,
+            'crop' => true,
         ]);
         $this->crud->addField([
             'label' => 'Espèce',
@@ -71,7 +73,7 @@ class AnimalCrudController extends CrudController
         ]);
         $this->crud->addField([
             'label' => 'Emplacement',
-            'type' => 'select2_multiple',
+            'type' => 'select2',
             'name' => 'location_id',
             'entity' => 'location',
             'attribute' => 'name',
