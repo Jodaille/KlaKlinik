@@ -44,9 +44,39 @@ class AnimalCrudController extends CrudController
     protected function setupCreateOperation()
     {
         $this->crud->setValidation(AnimalRequest::class);
+        $this->crud->addField([
+            'name' => 'name',
+            'label' => 'Nom',
+            'type' => 'text',
+            'placeholder' => 'le nom de l\'animal',
+        ]);
 
-        // TODO: remove setFromDb() and manually define Fields
-        $this->crud->setFromDb();
+        $this->crud->addField([
+            'name' => 'description',
+            'label' => 'Description',
+            'type' => 'ckeditor',
+            'placeholder' => 'Votre description',
+        ]);
+        $this->crud->addField([
+            'name' => 'image',
+            'label' => 'Image',
+            'type' => 'image',
+        ]);
+        $this->crud->addField([
+            'label' => 'Espèce',
+            'type' => 'select2',
+            'name' => 'species_id',
+            'entity' => 'species',
+            'attribute' => 'name',
+        ]);
+        $this->crud->addField([
+            'label' => 'Emplacement',
+            'type' => 'select2_multiple',
+            'name' => 'location_id',
+            'entity' => 'location',
+            'attribute' => 'name',
+        ]);
+
     }
 
     protected function setupUpdateOperation()

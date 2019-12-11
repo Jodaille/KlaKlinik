@@ -38,6 +38,10 @@ class Animal extends Model
     {
         return $this->belongsTo('App\Models\Species', 'species_id');
     }
+    public function location()
+    {
+        return $this->belongsTo('App\Models\Location', 'location_id');
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES
