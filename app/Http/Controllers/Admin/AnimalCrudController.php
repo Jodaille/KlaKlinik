@@ -23,7 +23,7 @@ class AnimalCrudController extends CrudController
     {
         $this->crud->setModel('App\Models\Animal');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/animal');
-        $this->crud->setEntityNameStrings('animal', 'animals');
+        $this->crud->setEntityNameStrings('animal', 'animaux');
     }
 
     protected function setupListOperation()
@@ -32,12 +32,59 @@ class AnimalCrudController extends CrudController
             ['label' => 'Nom', 'name' =>'name'],
         ]);
         $this->crud->addColumn([
-            'label' => 'Éspèce',
+            'label' => 'Espèce',
             'type' => 'select',
             'name' => 'species_id',
             'entity' => 'species',
             'attribute' => 'name',
             'model' => "App\Models\Species",
+        ]);
+        $this->crud->addColumn([
+            'label' => 'Propriétaire',
+            'type' => 'select',
+            'name' => 'owner_id',
+            'entity' => 'owner',
+            'attribute' => 'name',
+            'model' => "App\Models\AnimalOwner",
+        ]);
+        $this->crud->addColumn([
+            'label' => 'Emplacement',
+            'type' => 'select',
+            'name' => 'location_id',
+            'entity' => 'location',
+            'attribute' => 'name',
+            'model' => "App\Models\Location",
+        ]);
+    }
+    protected function setupShowOperation()
+    {
+        $this->crud->set('show.setFromDb', false);
+        $this->crud->setColumns([
+            ['label' => 'Nom', 'name' =>'name'],
+        ]);
+        $this->crud->addColumn([
+            'label' => 'Espèce',
+            'type' => 'select',
+            'name' => 'species_id',
+            'entity' => 'species',
+            'attribute' => 'name',
+            'model' => "App\Models\Species",
+        ]);
+        $this->crud->addColumn([
+            'label' => 'Propriétaire',
+            'type' => 'select',
+            'name' => 'owner_id',
+            'entity' => 'owner',
+            'attribute' => 'name',
+            'model' => "App\Models\AnimalOwner",
+        ]);
+        $this->crud->addColumn([
+            'name' => 'description',
+            'label' => 'Description',
+            'type' => 'closure',
+            'function' => function($entry) {
+                return html_entity_decode($entry->description);
+            }
         ]);
     }
 
@@ -78,7 +125,13 @@ class AnimalCrudController extends CrudController
             'entity' => 'location',
             'attribute' => 'name',
         ]);
-
+        $this->crud->addField([
+            'label' => 'Propriétaire',
+            'type' => 'select2',
+            'name' => 'owner_id',
+            'entity' => 'owner',
+            'attribute' => 'name',
+        ]);
     }
 
     protected function setupUpdateOperation()

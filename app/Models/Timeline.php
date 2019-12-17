@@ -4,12 +4,10 @@ namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
-use Cviebrock\EloquentSluggable\Sluggable;
 
-class Location extends Model
+class Timeline extends Model
 {
     use CrudTrait;
-    use Sluggable;
 
     /*
     |--------------------------------------------------------------------------
@@ -17,30 +15,22 @@ class Location extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'locations';
+    protected $table = 'timelines';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
-    protected $fillable = ['name',
-                        'description',
-                        'slug'];
+    // protected $fillable = [];
     // protected $hidden = [];
     // protected $dates = [];
 
-    public function sluggable()
+
+    public function operation()
     {
-        return [
-            'slug' => [
-                'source' => 'slug_or_name',
-            ],
-        ];
-    }
-    public function getSlugOrNameAttribute()
-    {
-        if ($this->slug != '') {
-            return $this->slug;
-        }
-        return $this->name;
+        return $this->belongsTo('App\Models\Operation', 'operation_id');
     }
 
+    public function animal()
+    {
+        return $this->belongsTo('App\Models\Animal', 'animal_id');
+    }
 }

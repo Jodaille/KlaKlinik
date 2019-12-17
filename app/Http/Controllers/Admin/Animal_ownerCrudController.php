@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\LocationRequest;
+use App\Http\Requests\Animal_ownerRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class LocationCrudController
+ * Class Animal_ownerCrudController
  * @package App\Http\Controllers\Admin
  * @property-read CrudPanel $crud
  */
-class LocationCrudController extends CrudController
+class Animal_ownerCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -21,22 +21,32 @@ class LocationCrudController extends CrudController
 
     public function setup()
     {
-        $this->crud->setModel('App\Models\Location');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/location');
-        $this->crud->setEntityNameStrings('emplacement', 'emplacements');
+        $this->crud->setModel('App\Models\AnimalOwner');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/animal_owner');
+        $this->crud->setEntityNameStrings('propriétaire', 'propriétaires');
     }
 
     protected function setupListOperation()
     {
         $this->crud->setColumns([
             ['label' => 'Nom', 'name' =>'name'],
-            ['label' => 'Description', 'name' =>'description'],
+            ['label' => 'Prénom', 'name' =>'firstname'],
+            ['label' => 'Date de naissance', 'name' =>'birthdate'],
+            ['label' => 'Téléphone', 'name' =>'phone'],
+        ]);
+        $this->crud->addColumn([
+            'label' => 'Ville',
+            'type' => 'select',
+            'name' => 'address_id',
+            'entity' => 'address',
+            'attribute' => 'city',
+            'model' => "App\Models\Address",
         ]);
     }
 
     protected function setupCreateOperation()
     {
-        $this->crud->setValidation(LocationRequest::class);
+        $this->crud->setValidation(Animal_ownerRequest::class);
 
         // TODO: remove setFromDb() and manually define Fields
         $this->crud->setFromDb();

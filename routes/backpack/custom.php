@@ -14,4 +14,8 @@ Route::group([
     Route::crud('species', 'SpeciesCrudController');
     Route::crud('animal', 'AnimalCrudController');
     Route::crud('location', 'LocationCrudController');
+    Route::crud('animal_owner', 'Animal_ownerCrudController');
+    Route::crud('address', 'AddressCrudController');
+    Route::crud('timeline', 'TimelineCrudController');
+    Route::crud('operation', 'OperationCrudController');
 }); // this should be the absolute last line of this file

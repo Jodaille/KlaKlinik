@@ -23,13 +23,16 @@ class SpeciesCrudController extends CrudController
     {
         $this->crud->setModel('App\Models\Species');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/species');
-        $this->crud->setEntityNameStrings('species', 'species');
+        $this->crud->setEntityNameStrings('espèce', 'espèces');
     }
 
     protected function setupListOperation()
     {
-        // TODO: remove setFromDb() and manually define Columns, maybe Filters
-        $this->crud->setFromDb();
+        $this->crud->setColumns([
+            ['label' => 'Nom', 'name' =>'name'],
+            ['label' => 'Nom latin', 'name' =>'latin_name'],
+            ['label' => 'Description', 'name' =>'description'],
+        ]);
     }
 
     protected function setupCreateOperation()

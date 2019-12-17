@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAnimalTable extends Migration
+class CreateAnimalOwnerTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,17 +12,14 @@ class CreateAnimalTable extends Migration
      */
     public function up()
     {
-        Schema::create('animals', function (Blueprint $table) {
+        Schema::create('animal_owners', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('firstname')->nullable();
             $table->string('slug')->nullable();
-            $table->text('description')->nullable();
-            $table->string('image')->nullable();
             $table->date('birthdate')->nullable();
-            $table->integer('race_id')->unsigned()->nullable();
-            $table->integer('species_id')->unsigned()->nullable();
-            $table->integer('location_id')->unsigned()->nullable();
-            $table->integer('owner_id')->unsigned()->nullable();
+            $table->string('phone')->nullable();
+            $table->integer('address_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }
@@ -34,6 +31,6 @@ class CreateAnimalTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('animal');
+        Schema::dropIfExists('animal_owner');
     }
 }

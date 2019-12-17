@@ -14,7 +14,7 @@
         <div class="c-breadcrumbs u-margin-top">
 			<a href="{{ url('/') }}">Accueil</a>
 			<i class="la la-angle-right"></i>
-
+            Espèces
             <div class="c-divider__long__thin"></div>
 		</div>
 
