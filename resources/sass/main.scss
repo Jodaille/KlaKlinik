@@ -78,6 +78,9 @@
 @import "settings/settings.config";
 @import "settings/settings.core";
 @import "settings/settings.global";
+@import "settings/settings.colors";
+@import "settings/settings.fonts";
+@import "~line-awesome/dist/line-awesome/css/line-awesome.min.css";
 
 
 
@@ -87,6 +90,8 @@
 @import "tools/tools.font-size";
 @import "tools/tools.clearfix";
 @import "tools/tools.hidden";
+@import "tools/tools.aliases";
+@import "tools/tools.mixins";
 @import "node_modules/sass-mq/mq";
 
 
@@ -137,7 +142,9 @@
 //
 // Build and include your project’s UI components here.
 @import "components/components.buttons";
-
+@import "components/components.card";
+//@import "components/components.packs";
+@import "components/components.animal-resume";
 
 
 

@@ -7,16 +7,16 @@ use Illuminate\Http\Request;
 
 class SpeciesController extends Controller
 {
-    public function listing(Request $request)
+    public function listing($slug, Request $request)
     {
         $species_id = 1;
-        $species = Species::find($species_id);
-        $animals = Animal::where('species_id' , $species_id)->get();
+        $species = Species::where(['slug' => $slug])->first();
+        $animals = Animal::where('species_id' , $species->id)->get();
         return view('animals/listing')->with([
 			'animals' 	 	=> $animals,
 			'species' 	 	=> $species,
 
 		]);
-	
+
     }
 }

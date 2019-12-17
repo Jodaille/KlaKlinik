@@ -1,0 +1,46 @@
+@mixin input-reset {
+    -webkit-appearance:     none;
+    -moz-appearance:        none;
+    -ms-appearance:         none;
+    -o-appearance:          none;
+    appearance:             none;
+    outline:                none;
+}
+
+@mixin ul-reset {
+    ul {
+        /* Display & Box Model */
+        margin: 0;
+
+        /* Other */
+        list-style: none;
+    }
+}
+
+@mixin a-reset {
+    a {
+        /* Text */
+        text-decoration: none;
+        
+        /* Color */
+        color: $black;
+    }
+}
+
+@mixin transition-normal {
+    -webkit-transition: $transition-normal;
+    -o-transition: $transition-normal;
+    transition: $transition-normal;
+}
+
+@mixin transition-large {
+    -webkit-transition: $transition-large;
+    -o-transition: $transition-large;
+    transition: $transition-large;
+}
+
+@mixin transition-huge {
+    -webkit-transition: $transition-huge;
+    -o-transition: $transition-huge;
+    transition: $transition-huge;
+}

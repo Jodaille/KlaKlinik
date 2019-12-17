@@ -17,19 +17,15 @@
 			{{@$species->name}}
             <div class="c-divider__long__thin"></div>
 		</div>
+
         <div class="o-layout">
         @foreach(@$animals as $animal)
-            <div class="o-layout__item u-1/2 u-1/4@tablet">
-                <a href="#" class="categorie__item u-margin-top">
-                    <span class="categorie__item__icon u-margin-bottom-small">
-                        {{$animal->name}}
 
-                    </span>
-                    <span class="categorie__item__name">
-                        {{$animal->description}}
-                    </span>
-                </a>
+            <div class="o-layout__item u-1/2@tablet u-1/4@desktop u-margin-top-small">
+                @include('components.card', ['animal' => $animal])
+
             </div>
+
         @endforeach
         </div>
     </div>

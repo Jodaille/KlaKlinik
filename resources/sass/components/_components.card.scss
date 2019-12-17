@@ -1,0 +1,55 @@
+.c-card {
+    background-color: $white;
+    border-radius: 0.3em;
+    border: 1px solid $color-gray-medium;
+    margin: $space-normal 0;
+}
+.c-card__animal {
+    display: flex;
+}
+.c-card__animal__link {
+    text-decoration: none;
+
+	color: $black;
+	&:hover {
+		color: $color-secondary;
+    }
+}
+
+.c-card__icon {
+    width: 30px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 5px;
+}
+.c-card__species {
+    justify-content: space-between;
+    padding: $space-small;
+}
+
+.c-card__header__title {
+    display: flex;
+
+    font-size: $font-size-normal;
+    text-transform: uppercase;
+    font-weight: $bold;
+    margin: $space-small 0 $space-tiny 0;
+}
+
+.c-card__header__description {
+    font-size: $font-size-Small;
+}
+
+
+.arrow-list {
+     transform: rotate(-90deg);
+     margin: 0.2em $space-tiny $space-tiny 0;
+}
+
+.c-card__animal__arrow {
+    transform: rotate(-180deg);
+}

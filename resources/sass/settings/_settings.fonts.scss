@@ -1,0 +1,26 @@
+///* ========================================================================
+//   #FONTS SETTINGS
+//   ======================================================================== */
+
+@import  url('https://fonts.googleapis.com/css?family=Poppins:400,600,700,800&display=swap');
+
+$global-font-stack: 'Poppins', sans-serif;
+
+$regular: 400;
+$semibold: 600;
+$bold: 700;
+$extrabold: 800;
+
+$font-size-HUGE: 2.875rem; // 46px xxhuge
+$font-size-Huge: 2.25rem; // 36px xxhuge
+$font-size-huge: 1.875rem; // 30px huge
+
+$font-size-LARGE: 1.5rem; // 24px xxlarge
+$font-size-Large: 1.25rem; // 20px xLarge
+$font-size-large: 1.125rem; // 18px large
+
+$font-size-normal: 1rem; // 16px normalsize (default)
+
+$font-size-small: 0.875rem; // 14px small
+$font-size-Small: 0.75rem; // 12px tiny
+$font-size-SMALL: 0.625rem; //10 tiny

@@ -5,10 +5,12 @@ namespace App\Models;
 use App\Traits\ImageTrait;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Animal extends Model
 {
     use CrudTrait, ImageTrait;
+    use Sluggable;
 
     /*
     |--------------------------------------------------------------------------
@@ -19,11 +21,33 @@ class Animal extends Model
     protected $table = 'animals';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
-    protected $guarded = ['id'];
-    // protected $fillable = [];
+    protected $guarded = ['id',
+
+                    ];
+    protected $translatable = ['name', 'slug'];
+    protected $fillable = ['name',
+                        'slug',
+                        'description',
+                        'image',
+                        'species_id',
+                        'location_id',];
     // protected $hidden = [];
     // protected $dates = [];
-
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'slug_or_name',
+            ],
+        ];
+    }
+    public function getSlugOrNameAttribute()
+    {
+        if ($this->slug != '') {
+            return $this->slug;
+        }
+        return $this->name;
+    }
     /*
     |--------------------------------------------------------------------------
     | FUNCTIONS
