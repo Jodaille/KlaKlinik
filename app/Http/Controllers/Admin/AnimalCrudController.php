@@ -30,6 +30,7 @@ class AnimalCrudController extends CrudController
     {
         $this->crud->setColumns([
             ['label' => 'Nom', 'name' =>'name'],
+            ['label' => 'N° identité', 'name' =>'identity'],
         ]);
         $this->crud->addColumn([
             'label' => 'Espèce',
@@ -55,6 +56,7 @@ class AnimalCrudController extends CrudController
             'attribute' => 'name',
             'model' => "App\Models\Location",
         ]);
+        $this->crud->orderBy('name', 'ASC');
     }
     protected function setupShowOperation()
     {

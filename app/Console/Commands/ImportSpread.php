@@ -42,6 +42,7 @@ class ImportSpread extends Command
         $locationname = $row['D'];
         $animal = Animal::firstOrNew(['id' => $id]);
         $animal->name = $name;
+        $animal->identity = $id;
         $species = Species::firstOrNew(['name' => $speciesname]);
         $species->save();
         $animal->species_id = $species->id;
