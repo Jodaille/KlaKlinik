@@ -11,8 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/animaux/chiens', 'SpeciesController@listing');
+Route::get('/img/icons/arrowdown.svg', 'SvgController@arrowdown');
+Route::get('/img/icons/medal.svg', 'SvgController@medal');
+Route::get('/img/icons/medal-red.svg', 'SvgController@medalred');
+
+Route::get('/animaux/{slug}', 'SpeciesController@listing')->name('animals.of.species');
