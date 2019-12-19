@@ -33,6 +33,13 @@ class AnimalCrudController extends CrudController
             ['label' => 'N° identité', 'name' =>'identity'],
         ]);
         $this->crud->addColumn([
+            'label' => 'Image',
+            'type' => 'image',
+            'name' => 'image',
+            'height' => '60px',
+            'width' => '60px',
+        ]);
+        $this->crud->addColumn([
             'label' => 'Espèce',
             'type' => 'select',
             'name' => 'species_id',
