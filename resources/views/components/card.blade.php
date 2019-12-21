@@ -8,8 +8,11 @@
             <span class="c-card__header__title">
                 {{$animal->name}}
             </span>
+            <span class="c-card__header__image">
+                @if($animal->image) <img src="{{asset($animal->image)}}" title="{{$animal->name}}" /> @endif
+            </span>
             <span class="c-card__header__description">
-                {{$animal->description}}
+                {!! $animal->description !!}
             </span>
         </span>
         <span class="c-card__animal__arrow">
