@@ -19,6 +19,7 @@
     </head>
     <body>
         <header>
+            @include('components.navigation')
         </header>
         <div id="app">
             @yield('content')
@@ -31,4 +32,4 @@
         @stack('js')
     </body>
 </html>
- 
+
