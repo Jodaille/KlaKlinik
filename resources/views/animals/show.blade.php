@@ -28,8 +28,13 @@
                 {{$animal->name}}
                 {{$animal->idendity}}
             </span>
+
             <span class="c-card__header__image">
                 @if($animal->image) <img src="{{asset($animal->image)}}" title="{{$animal->name}}" /> @endif
+            </span>
+            <span class="c-card__header__actions">
+                <a class="c-card__animal__link" href="/admin/animal/{{$animal->id}}/edit" ><i class="la la-edit"></i> Éditer</a>
+
             </span>
             <span class="c-card__header__description">
                 {!! $animal->description !!}

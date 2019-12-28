@@ -1,4 +1,3 @@
-{{-- <a class="c-card__animal__link" href="/admin/animal/{{$animal->id}}/edit" > --}}
 <a class="c-card__animal__link" href="{{route('animal.show',['speciesslug' => $animal->species->slug, 'slug' => $animal->slug, 'id' =>$animal->id])}}" >
     <span class="c-card__animal u-margin-bottom">
         <span class="">
