@@ -45,33 +45,49 @@ class Species extends Model
         return $this->name;
     }
 
-    /*
-    |--------------------------------------------------------------------------
-    | FUNCTIONS
-    |--------------------------------------------------------------------------
-    */
 
-    /*
-    |--------------------------------------------------------------------------
-    | RELATIONS
-    |--------------------------------------------------------------------------
-    */
+	public function parent()
+    {
+        return $this->belongsTo('App\Models\Pages\Category', 'parent_id');
+    }
 
-    /*
-    |--------------------------------------------------------------------------
-    | SCOPES
-    |--------------------------------------------------------------------------
-    */
+    public function children()
+    {
+        return $this->hasMany('App\Models\Pages\Category', 'parent_id')->orderBy('lft', 'ASC');
+    }
 
-    /*
-    |--------------------------------------------------------------------------
-    | ACCESSORS
-    |--------------------------------------------------------------------------
-    */
+    public function scopeFirstLevelItems($query)
+    {
+        return $query->where('depth', '1')
+                    ->orWhere('depth', null)
+                    ->orderBy('lft', 'ASC');
+    }
 
-    /*
-    |--------------------------------------------------------------------------
-    | MUTATORS
-    |--------------------------------------------------------------------------
-    */
+        /**
+     * Get all species items, in a hierarchical collection.
+     * Only supports 2 levels of indentation.
+     */
+    public static function getTree()
+    {
+        $menu = self::orderBy('lft')->get();
+
+        if ($menu->count()) {
+            foreach ($menu as $k => $menu_item) {
+                $menu_item->children = collect([]);
+
+                foreach ($menu as $i => $menu_subitem) {
+                    if ($menu_subitem->parent_id == $menu_item->id) {
+                        $menu_item->children->push($menu_subitem);
+
+                        // remove the subitem for the first level
+                        $menu = $menu->reject(function ($item) use ($menu_subitem) {
+                            return $item->id == $menu_subitem->id;
+                        });
+                    }
+                }
+            }
+        }
+
+        return $menu;
+    }
 }
