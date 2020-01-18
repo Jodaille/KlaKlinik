@@ -31,7 +31,7 @@
 
             <div class="o-box">
                 <span class="c-card__header__image">
-                    @if(backpack_user()->id)
+                    @if(backpack_user() && backpack_user()->id)
                         @include('components.snapshot', ['animal_id' => $animal->id])
                     @endif
                     @if($animal->image) <img src="{{asset($animal->image)}}" title="{{$animal->name}}" id="image" /> @endif
