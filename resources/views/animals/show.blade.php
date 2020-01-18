@@ -29,41 +29,48 @@
                 {{$animal->idendity}}
             </span>
 
-            <span class="c-card__header__image">
-                @if($animal->image) <img src="{{asset($animal->image)}}" title="{{$animal->name}}" id="image" /> @endif
-            </span>
-            <span class="c-card__header__actions">
-                <a class="c-card__animal__link" href="/admin/animal/{{$animal->id}}/edit" ><i class="la la-edit"></i> Éditer</a>
+            <div class="o-box">
+                <span class="c-card__header__image">
+                    @if(backpack_user()->id)
+                        @include('components.snapshot', ['animal_id' => $animal->id])
+                    @endif
+                    @if($animal->image) <img src="{{asset($animal->image)}}" title="{{$animal->name}}" id="image" /> @endif
 
-            </span>
-            <span class="c-card__header__description">
-                {!! $animal->description !!}
-            </span>
-            @if($animal->location)
-            <span class="c-card__header__location">
-            <u>Emplacement</u>:
-                {{ $animal->location->name }}
-            </span><br>
-            @endif
+                </span>
+                <span class="c-card__header__actions">
+                    <a class="c-card__animal__link" href="/admin/animal/{{$animal->id}}/edit" ><i class="la la-edit"></i> Éditer</a>
 
-            @if($animal->birthdate)
-            <span class="c-card__header__birthdate">
-            <u>Date de naissance</u>:
-                {{ $animal->birthdate }}
-            </span><br>
-            @endif
+                </span>
+            </div>
+            <div class="o-box">
+                <span class="c-card__header__description">
+                    <p>{!! $animal->description !!}</p>
+                </span>
+                @if($animal->location)
+                <span class="c-card__header__location">
+                <u>Emplacement</u>:
+                    {{ $animal->location->name }}
+                </span><br>
+                @endif
 
-            @if($animal->owner)
-            <span class="c-card__header__owner">
-            <u>Propriétaire</u>:
-                {{ $animal->owner->firstname }}
-                {{ $animal->owner->name }}
-            </span>
-            @endif
+                @if($animal->birthdate)
+                <span class="c-card__header__birthdate">
+                <u>Date de naissance</u>:
+                    {{ $animal->birthdate }}
+                </span><br>
+                @endif
+
+                @if($animal->owner)
+                <span class="c-card__header__owner">
+                <u>Propriétaire</u>:
+                    {{ $animal->owner->firstname }}
+                    {{ $animal->owner->name }}
+                </span>
+                @endif
+            </div>
+
         </div>
         </div>
-    @if(Auth::check())
-        @include('components.snapshot', ['animal_id' => $animal->id])
-    @endif
+
     </div>
 @endsection
