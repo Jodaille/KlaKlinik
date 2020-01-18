@@ -5,6 +5,7 @@ use App\Models\Animal;
 use App\Models\Species;
 use Illuminate\Http\Request;
 
+
 class HomeController extends Controller
 {
     public function index(Request $request)
@@ -18,4 +19,6 @@ class HomeController extends Controller
 		]);
 
     }
+
+
 }

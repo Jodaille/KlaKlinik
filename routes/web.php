@@ -20,3 +20,4 @@ Route::get('/img/icons/medal-red.svg', 'SvgController@medalred');
 Route::get('/animaux/{slug}', 'SpeciesController@listing')->name('animals.of.species');
 Route::get('/animaux/{speciesslug}/{slug}/{id}', 'AnimalController@show')->name('animal.show');
 Route::get('/search', 'SearchController@search')->name('search');
+Route::post('/api/upload', 'AnimalController@upload')->name('upload');

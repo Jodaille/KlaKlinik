@@ -30,7 +30,7 @@
             </span>
 
             <span class="c-card__header__image">
-                @if($animal->image) <img src="{{asset($animal->image)}}" title="{{$animal->name}}" /> @endif
+                @if($animal->image) <img src="{{asset($animal->image)}}" title="{{$animal->name}}" id="image" /> @endif
             </span>
             <span class="c-card__header__actions">
                 <a class="c-card__animal__link" href="/admin/animal/{{$animal->id}}/edit" ><i class="la la-edit"></i> Éditer</a>
@@ -62,5 +62,8 @@
             @endif
         </div>
         </div>
+    @if(Auth::check())
+        @include('components.snapshot', ['animal_id' => $animal->id])
+    @endif
     </div>
 @endsection

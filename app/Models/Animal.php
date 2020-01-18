@@ -51,6 +51,14 @@ class Animal extends Model
         return $this->name;
     }
 
+    public function getImageSrcAttribute()
+    {
+        if ($this->image != '') {
+            return asset($this->image);
+        }
+        return false;
+    }
+
     public function species()
     {
         return $this->belongsTo('App\Models\Species', 'species_id');
